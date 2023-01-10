@@ -63,6 +63,17 @@ namespace Infrastructure.Repository
             }
         }
 
+        public async Task<Employee> GetByNameAsync(string name)
+        {
+            var sql = "SELECT * FROM employees WHERE Name = @name";
+            using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var result = await connection.QuerySingleOrDefaultAsync<Employee>(sql, new { Id = name });
+                return result;
+            }
+        }
+
         public async Task<int> UpdateAsync(Employee entity)
         {
      

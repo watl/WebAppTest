@@ -8,10 +8,10 @@ namespace Core.Entities
 {
     public class Rate
     {
-        public int Id { get; set; }
-        public DateTime DateRate { get; set; }
-        public double RateCord { get; set; }
-        public double RateUsd { get; set; }
+        public int id { get; set; }
+        public DateTime daterate { get; set; }
+        public double ratecord { get; set; }
+        public double rateusd { get; set; }
 
     }
 }

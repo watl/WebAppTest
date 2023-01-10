@@ -12,8 +12,6 @@ namespace WebAppTest.Controllers
     public class ProductController : ControllerBase 
     {
         private readonly IUnitOfWork unitOfWork;
-
-        private readonly ProductRepository productRepository;
         private readonly Tipo_Cambio_BCNSoap tipo_Cambio_BCNSoap;
 
         public ProductController(IUnitOfWork unitOfWork, Tipo_Cambio_BCNSoap tipo_Cambio_BCNSoap)

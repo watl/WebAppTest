@@ -9,12 +9,14 @@ namespace Infrastructure.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public UnitOfWork(IProductRepository productRepository,IEmployeeRepository employeeRepository)
+        public UnitOfWork(IProductRepository productRepository,IEmployeeRepository employeeRepository, IRateRepository rates)
         {
             Products = productRepository;
             Employees = employeeRepository;
+            Rates = rates;
         }
         public IProductRepository Products { get; }
         public IEmployeeRepository Employees { get; }
+        public IRateRepository Rates { get; }
     }
 }

@@ -10,8 +10,6 @@ namespace WebAppTest.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
-
-        private readonly EmployeeRepository employeeRepository;
         public EmployeeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
