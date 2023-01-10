@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interface
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IPriceRepository : IGenericRepository<Price>
     {
-        Task<Product> GetByNameAsync(string name);
-
     }
 }

@@ -9,5 +9,6 @@ namespace Application.Interface
 {
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {
+        Task<Employee> GetByNameAsync(string name);
     }
 }

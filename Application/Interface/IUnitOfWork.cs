@@ -10,5 +10,6 @@ namespace Application.Interface
     {
         IProductRepository Products { get; }
         IEmployeeRepository Employees { get; }
+        IRateRepository Rates { get; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Interface;
+using Infraestructura.Repository;
 using Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -15,6 +16,7 @@ namespace Infraestructura
         {
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IRateRepository, RateRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
