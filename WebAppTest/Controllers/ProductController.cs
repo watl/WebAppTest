@@ -12,20 +12,49 @@ namespace WebAppTest.Controllers
     public class ProductController : ControllerBase 
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly Tipo_Cambio_BCNSoap tipo_Cambio_BCNSoap;
+      
 
-        public ProductController(IUnitOfWork unitOfWork, Tipo_Cambio_BCNSoap tipo_Cambio_BCNSoap)
+        public ProductController(IUnitOfWork unitOfWork)
         {
-            this.unitOfWork = unitOfWork;
-            this.tipo_Cambio_BCNSoap = tipo_Cambio_BCNSoap; 
+            this.unitOfWork = unitOfWork;         
         }
 
-        [HttpPost("GetTipoCambio")]
-        public IActionResult GetTipoCambioDia(int dia, int mes, int anio)
-        {   
-            var response = tipo_Cambio_BCNSoap.RecuperaTC_Dia(dia, mes, anio);
-            return Ok(response);
+  
 
+        [HttpPost]
+        [Route("AddProduct")]
+        public async Task<IActionResult> AddProductAsync(Product product)
+        {
+            var data = await unitOfWork.Products.AddProductAsync(product);
+            return Ok(data);
+        }
+
+        [HttpGet]
+        [Route("GetActiveProductsAsync")]
+        public async Task<IActionResult> GetActiveProductsAsync()
+        {
+            var data = await unitOfWork.Products.GetActiveProductsAsync();
+            if (data == null) return Ok();
+            return Ok(data);
+        }
+
+        [HttpGet]
+        [Route("GetBySkuAsync")]
+        public async Task<IActionResult> GetBySkuAsync(string texto)
+        {
+            var data = await unitOfWork.Products.GetBySkuAsync(texto);
+            if (data == null) return Ok();
+            return Ok(data);
+        }
+
+
+        [HttpGet]
+        [Route("GetByDescriptionAsync")]
+        public async Task<IActionResult> GetByDescriptionAsync(string texto)
+        {
+            var data = await unitOfWork.Products.GetByDescriptionAsync(texto);
+            if (data == null) return Ok();
+            return Ok(data);
         }
 
         [HttpGet]

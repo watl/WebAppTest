@@ -10,8 +10,8 @@ namespace Core.Entities
     {
         public int id { get; set; }
         public DateTime daterate { get; set; }
-        public double ratecord { get; set; }
-        public double rateusd { get; set; }
+        public decimal ratecord { get; set; }
+        public decimal rateusd { get; set; }
 
     }
 }

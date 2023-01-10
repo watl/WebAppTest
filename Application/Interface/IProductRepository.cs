@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace Application.Interface
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IProductRepository : IGenericRepository<Product> 
     {
+       
         Task<Product> GetByNameAsync(string name);
+        Task<IReadOnlyList<ProductDTO>> GetBySkuAsync(string name);
+        Task<IReadOnlyList<ProductDTO>> GetActiveProductsAsync();
+        Task<IReadOnlyList<ProductDTO>> GetByDescriptionAsync(string name);
+        Task<int> AddProductAsync(Product prod);
 
     }
 }
