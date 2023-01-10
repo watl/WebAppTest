@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Core.Entities;
 using Microsoft.Extensions.Configuration;
 using Dapper;
+using System.Data;
 
 namespace Infrastructure.Repository
 {
@@ -19,12 +20,18 @@ namespace Infrastructure.Repository
         }
         public async Task<int> AddAsync(Product entity)
         {
-            entity.AddedOn = DateTime.Now;
-            var sql = "Insert into Products (Name,Description,Barcode,Rate,AddedOn) VALUES (@Name,@Description,@Barcode,@Rate,@AddedOn)";
+            entity.Active = true;
+            var sql = "Insert into Products (Name,Description,Sku,Active,Unitprice) VALUES (@Name,@Description,@Sku,@Active,@Unitprice)";
             using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
                 var result = await connection.ExecuteAsync(sql, entity);
+                //using (IDbTransaction transaccion = connection.BeginTransaction())
+                //{
+                //    // Obtener id del producto recién agregado
+                //    entity.Id = connection.Query<int>("SELECT MAX(IdProducto) FROM productos", null, transaccion).Single();
+                //}
+
                 return result;
             }
         }
