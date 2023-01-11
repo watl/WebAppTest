@@ -3,7 +3,7 @@ using Core.Entities;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ServiceReference;
+
 
 namespace WebAppTest.Controllers
 {
@@ -19,7 +19,6 @@ namespace WebAppTest.Controllers
             this.unitOfWork = unitOfWork;         
         }
 
-  
 
         [HttpPost]
         [Route("AddProduct")]
