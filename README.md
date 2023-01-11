@@ -13,7 +13,7 @@ El siguiente proyecto esta desarrollado con las siguientes tecnologias:
 
 
 EL proyecto fue elaborado en VS2022 de tipo web api Net 6, utilizando como base de datos PostgreSql 11.
-Estructura ---> la solucion Cuenta con 4 capas (Aplicacion,Core,Infraestructura, WebApi{aca pueden encontrar los controladores}  ).
+Estructura ---> la solucion Cuenta con 4 capas (Aplicacion,Core {scripts de base de datos} ,Infraestructura, WebApi{aca pueden encontrar los controladores}  ).
 
 appsettings.json ---> conexion BD.
 
