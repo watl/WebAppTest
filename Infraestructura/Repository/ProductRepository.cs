@@ -22,7 +22,7 @@ namespace Infrastructure.Repository
         public async Task<int> AddAsync(Product entity)
         {
            entity.active = true;
-            var sql = "Insert into Products (Name,Description,Barcode,Rate,AddedOn) VALUES (@Name,@Description,@Barcode,@Rate,@AddedOn)";
+            var sql = "Insert into Products (name,description,sku,active,unitprice) VALUES (@name,@description,@sku,@active,@unitprice)";
             using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();

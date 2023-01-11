@@ -10,5 +10,6 @@ namespace Application.Interface
     public interface IFacturaRepository : IGenericRepository<Factura>
     {
 
+        Task<IReadOnlyList<FacturaDTO>> ObtenerFacturasAsync();
     }
 }

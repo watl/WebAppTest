@@ -20,6 +20,11 @@ namespace Infraestructura.Repository
             this.configuration = configuration;
         }
 
+        /// <summary>
+        /// guardar datos de precios
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task<int> AddAsync(Price entity)
         {
             using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))

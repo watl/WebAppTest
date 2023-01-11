@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Infraestructura.Repository
 {
@@ -60,6 +61,17 @@ namespace Infraestructura.Repository
                 connection.Open();
                 var result = await connection.QuerySingleOrDefaultAsync<Factura>(sql, new { Id = id });
                 return result;
+            }
+        }
+
+        public async Task<IReadOnlyList<FacturaDTO>> ObtenerFacturasAsync()
+        {
+            var sql = "select * from consultarfacturas";
+            using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<FacturaDTO>(sql);
+                return result.ToList();
             }
         }
 

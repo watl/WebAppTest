@@ -10,6 +10,9 @@ namespace Application.Interface
     {
         IProductRepository Products { get; }
         IEmployeeRepository Employees { get; }
+        IDetalleFacturaRepository DetalleFactura { get; }
+        IFacturaRepository Factura { get; }
         IRateRepository Rates { get; }
+        IPriceRepository Price { get; }
     }
 }

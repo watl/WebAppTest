@@ -17,6 +17,9 @@ namespace Infraestructura
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IRateRepository, RateRepository>();
+            services.AddTransient<IFacturaRepository, FacturaRepository>();
+            services.AddTransient<IPriceRepository, PriceRepository>();
+            services.AddTransient<IDetalleFacturaRepository, DetalleFacturaRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }

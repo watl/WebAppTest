@@ -21,9 +21,14 @@ namespace Infraestructura.Repository
           this.configuration = configuration;
         }
 
-
+        /// <summary>
+        /// Ingresa detalle factura
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public async Task<int> AgregarDetalleFacturaAsync(DetalleFactura dt)
         {
+            
             Factura fc = new Factura();
             Product prd= new Product();
             decimal total = 0;
@@ -34,11 +39,9 @@ namespace Infraestructura.Repository
             using (var connection = new Npgsql.NpgsqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                
-
                 connection.Open();
-
-      
-
+    
+                //crea registro de detalle
                 var sql = "Insert into detallefactura (idproducto,idfactura,cantidad) VALUES (@idproducto,@idfactura,@cantidad)";
                 var result = await connection.ExecuteAsync(sql, dt);
                 using (IDbTransaction transaccion = connection.BeginTransaction())
@@ -50,7 +53,7 @@ namespace Infraestructura.Repository
                     //consulta productos
                     var sqlProd = "SELECT * FROM product WHERE id = @id";
 
-                 
+                    //obtener valores generales para actualizar cabecera de factura
                     foreach (var producto in listaProductos)
                     {
                         //Obtener producto                
@@ -65,8 +68,6 @@ namespace Infraestructura.Repository
                     //actualizar informacion en tabla Factura por numeroFactura.
                     var sqlUpdateFact = "UPDATE factura SET subtotal = @value1, iva = @value2,  total = @value3  WHERE id = @Id";
                     var resultUpdate = await connection.ExecuteAsync(sql, new { value1 = subtotal, value2 = iva, value3 = total , id = dt.idfactura });
-
-
 
 
 
